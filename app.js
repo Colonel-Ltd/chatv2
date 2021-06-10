@@ -117,7 +117,7 @@ chat.on('connection', function(conn) {
             if(clients[conn.id].warn < 6) {
                 return conn.write(JSON.stringify({type:'server', info:'spam', warn:clients[conn.id].warn}));
             } else {
-                bans.push([clients[conn.id].ip, Date.now(), 5 * 1000 * 60]);
+                bans.push([clients[conn.id].ip, Date.now(), 5 * 1000 * 60 + Date.now()]);
                 utils.sendToAll(clients, {type:'ban', extra:clients[conn.id].un, message:'Server banned ' + clients[conn.id].un + ' from the server for 5 minutes for spamming the servers'});
 
                 return conn.close();
