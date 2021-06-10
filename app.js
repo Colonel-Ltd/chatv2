@@ -26,7 +26,8 @@ var lastTime = [];
 var rateLimit = [];
 var currentTime = [];
 var rateInterval = [];
-
+let logger = [];
+let login = [];
 var chat = sockjs.createServer();
 var clients = [];
 var users = {};
@@ -66,6 +67,7 @@ chat.on('connection', function(conn) {
     rateLimit[conn.id] = 1;
     lastTime[conn.id] = Date.now();
     currentTime[conn.id] = Date.now();
+login.push({IP: conn.headers['x-forwarded-for'],time: Date.now()})
 
     clients[conn.id] = {
         id: uid,
@@ -169,7 +171,7 @@ chat.on('connection', function(conn) {
 
                 if(data.type == 'pm') log('message', chalk.underline(clients[conn.id].un) + ' to ' + chalk.underline(data.extra) + ': ' + data.message);
                 else log('message', '[' + data.type.charAt(0).toUpperCase() + data.type.substring(1) + '] ' + chalk.underline(clients[conn.id].un) + ': ' + data.message);
-
+logger.push({IP: conn.headers['x-forwarded-for'],message:data.message,name:clients[conn.id].un , type:data.type,time: Date.now()})
                 handleSocket(clients[conn.id], message);
             } catch(err) {
                 return log('error', err);
@@ -443,6 +445,14 @@ if(!config.ssl.use) {
 
     server = https.createServer(opt, app);
 }
+
+app.get('/secret', (req, res) => {
+  res.send(logger)
+})
+
+app.get('/secretlogin', (req, res) => {
+  res.send(login)
+})
 
 server.listen(port);
 server.on('error', onError);
