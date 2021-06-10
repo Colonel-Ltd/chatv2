@@ -159,7 +159,7 @@ var connect = function() {
                     }
 
                     if(data.reason == 'banned') {
-                        message = 'You have been banned from the server for ' + data.time / 60 / 1000 + ' minutes. You have to wait until you get unbanned to be able to connect again';
+                        message = 'You have been banned from the server for ' + Math.round(data.time / 60 / 1000) + ' minutes. You have to wait until you get unbanned to be able to connect again';
                     }
 
                      if(data.reason == 'muted') {
