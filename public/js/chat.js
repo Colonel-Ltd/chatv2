@@ -137,6 +137,8 @@ var connect = function() {
                         stream.play();
                       }
                                             $('#stream').show();
+                    }else {
+                     $('#stream').hide();
                     }
     return showChat('global', data.user, data.message, data.subtxt, data.mid)
  }
