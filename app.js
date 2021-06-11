@@ -232,8 +232,9 @@ function handleSocket(user, message) {
     data.message = s.escapeHTML(data.message);
     data.mid = (Math.random() + 1).toString(36).substr(2, 5);
 if (data.type == "stream") {
-      data.message = "Stream ON";
       serverConfig.stream = !serverConfig.stream;
+          data.message = serverConfig.stream ? "Stream ON" : "Stream OFF";
+
       data.config = serverConfig
        return utils.sendToAll(clients, data);
 
