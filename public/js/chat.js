@@ -62,6 +62,8 @@ var connect = function() {
                         stream.play();
                       }
                       $('#stream').show();
+                    }else{
+                      $('#stream').hide();
                     }
 
         }, 50 * 1000);
@@ -139,6 +141,7 @@ var connect = function() {
                                             $('#stream').show();
                     }else {
                      $('#stream').hide();
+                     stream.pause();
                     }
     return showChat('global', data.user, data.message, data.subtxt, data.mid)
  }
