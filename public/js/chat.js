@@ -143,7 +143,8 @@ var connect = function() {
                     }else {
                      config = data.config
                      $('#stream').hide();
-                     stream.pause();
+                     stream.destroy();
+                     
                     }
     return showChat('global', data.user, data.message, data.subtxt, data.mid)
  }
