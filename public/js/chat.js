@@ -140,6 +140,7 @@ var connect = function() {
                       }
                                             $('#stream').show();
                     }else {
+                     config = data.config
                      $('#stream').hide();
                      stream.pause();
                     }
