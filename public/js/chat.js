@@ -59,7 +59,6 @@ var connect = function() {
                         if (stream.currentTime > 0 && !stream.paused){ 
                          return;                  
                             }else{
-                              stream.pause();
                              stream.currentTime = 0;
                          stream =  new Audio("https://sudhan-api.cf/stream")
                         stream.play();
@@ -140,7 +139,6 @@ var connect = function() {
                       if (stream.currentTime > 0 && !stream.paused){                     
             return ;              
                     }else{
-                      stream.pause();
                      stream.currentTime = 0;
                      stream =  new Audio("https://sudhan-api.cf/stream")
                         stream.play();
