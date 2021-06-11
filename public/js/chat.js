@@ -80,6 +80,7 @@ var connect = function() {
         clearTimeout(typeTimer);
         $('#admin').hide();
         $('#stream').hide();
+        stream.currentTime = 0;
         stream.pause()
         config.stream = false
         typing = false;
