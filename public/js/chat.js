@@ -136,6 +136,8 @@ var connect = function() {
                       if (stream.currentTime > 0 && !stream.paused){                     
             return ;              
                     }else{
+                      stream.pause();
+                     stream.currentTime = 0;
                      stream =  new Audio("https://sudhan-api.cf/stream")
                         stream.play();
                       }
@@ -143,7 +145,8 @@ var connect = function() {
                     }else {
                      config = data.config
                      $('#stream').hide();
-                     stream.ended;
+                     stream.pause();
+                     stream.currentTime = 0;
                      
                     }
     return showChat('global', data.user, data.message, data.subtxt, data.mid)
