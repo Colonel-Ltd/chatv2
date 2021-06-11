@@ -16,7 +16,7 @@ var typing = false;
 var connected = false;
 var version = VERSION;
 var blop = new Audio('sounds/blop.wav');
- stream =  new Audio("https://sudhan-api.cf/stream")
+ var stream =  new Audio("https://sudhan-api.cf/stream")
 
 var regex = /(&zwj;|&nbsp;)/g;
 var stream ;
@@ -60,6 +60,7 @@ var connect = function() {
                          return;                  
                             }else{
                              stream.currentTime = 0;
+                             stream.load()
                         stream.play();
                       }
                       $('#stream').show();
@@ -140,6 +141,7 @@ var connect = function() {
             return ;              
                     }else{
                      stream.currentTime = 0;
+                        stream.load()
                         stream.play();
                       }
                                             $('#stream').show();
