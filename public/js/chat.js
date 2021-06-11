@@ -56,15 +56,19 @@ var connect = function() {
             socket.send(JSON.stringify({type: 'ping'}));
             if(config.stream){
               console.log(stream.currentTime)
-                        if (stream.currentTime > 0 && !stream.paused){                    return;                  
+                        if (stream.currentTime > 0 && !stream.paused){ 
+                         return;                  
                             }else{
+                              stream.pause();
+                             stream.currentTime = 0;
                          stream =  new Audio("https://sudhan-api.cf/stream")
                         stream.play();
                       }
                       $('#stream').show();
                     }else{
                       $('#stream').hide();
-                     stream.pause()
+                      stream.pause();
+                      stream.currentTime = 0;
                     }
 
         }, 50 * 1000);
