@@ -64,6 +64,7 @@ var connect = function() {
                       $('#stream').show();
                     }else{
                       $('#stream').hide();
+                     stream.pause()
                     }
 
         }, 50 * 1000);
