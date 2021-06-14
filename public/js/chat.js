@@ -287,7 +287,7 @@ var connect = function() {
         if(data.type == 'global' || data.type == 'pm' || data.type == 'mention') {
             if(!focus) {
                 unread++;
-                document.title = '(' + unread + ') Sanalika Community';
+                document.title = '(' + unread + ') Sanalika | Community Chat';
 
                 if(settings.sound) {
                     blop.play();
@@ -836,7 +836,7 @@ if(typeof(Storage) !== 'undefined') {
 }
 
 window.onfocus = function() {
-    document.title = 'Sanalika Community';
+    document.title = 'Sanalika | Community Chat';
     focus = true;
     unread = 0;
 };
